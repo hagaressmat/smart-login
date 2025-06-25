@@ -43,7 +43,10 @@ function login() {
       `;
         nav.style.visibility = `visible`;
       }
-    } else if (storedUser[i].email !== signinEmail.value) {
+    } else if (
+      storedUser[i].email !== signinEmail.value ||
+      storedUser.length === 0
+    ) {
       incorrect.innerHTML = ` the email is not exist`;
       incorrect.style.color = `red`;
     }
