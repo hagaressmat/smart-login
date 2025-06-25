@@ -1,9 +1,15 @@
 var signinEmail = document.getElementById("signinEmail");
 var signinPassword = document.getElementById("signinPassword");
 
+var emailNotValid = document.getElementById("emailNotValid");
+
 var incorrect = document.getElementById("incorrect");
 
 var page = document.getElementById("group");
+
+var nav = document.getElementById("nav");
+
+nav.style.visibility = `hidden`;
 
 signinEmail.addEventListener("input", function () {
   emailValid(signinEmail.value);
@@ -30,11 +36,22 @@ function login() {
     if (storedUser[i].email === signinEmail.value) {
       if (storedUser[i].password !== signinPassword.value) {
         incorrect.innerHTML = ` the email or password incorrect`;
+        incorrect.style.color = `red`;
       } else if (storedUser[i].password === signinPassword.value) {
-        page.innerHTML = `<h1>Welcome ${storedUser[i].name}</h1> `;
+        page.innerHTML = ` 
+        <h1 > Welcom ${storedUser[i].name}</h1>
+      `;
+        nav.style.visibility = `visible`;
       }
     } else if (storedUser[i].email !== signinEmail.value) {
       incorrect.innerHTML = ` the email is not exist`;
+      incorrect.style.color = `red`;
     }
   }
+}
+
+function logout() {
+  window.location.href = "./signUp.html";
+
+  nav.style.visibility = `hidden`;
 }
