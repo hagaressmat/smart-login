@@ -11,15 +11,14 @@ var nav = document.getElementById("nav");
 
 nav.style.visibility = `hidden`;
 
-signinEmail.addEventListener("input", function () {
+signinEmail.addEventListener("change", function () {
   emailValid(signinEmail.value);
 });
 
 function emailValid(value) {
   regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   if (regex.test(value)) {
-    emailNotValid.style.color = `green`;
-    emailNotValid.innerHTML = ` the email is valid`;
+    emailNotValid.innerHTML = ``;
     return regex.test(value);
   } else {
     emailNotValid.style.color = `red`;
@@ -54,7 +53,7 @@ function login() {
 }
 
 function logout() {
-  window.location.href = "./signUp.html";
+  window.location.href = "./signup.html";
 
   nav.style.visibility = `hidden`;
 }
