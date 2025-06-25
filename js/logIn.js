@@ -31,7 +31,10 @@ function emailValid(value) {
 function login() {
   var user = localStorage.getItem("user");
   let storedUser = user ? JSON.parse(user) : [];
-
+  if (storedUser.length == 0) {
+    incorrect.innerHTML = ` the email is not exist`;
+    incorrect.style.color = `red`;
+  }
   for (var i = 0; i < storedUser.length; i++) {
     if (storedUser[i].email === signinEmail.value) {
       if (storedUser[i].password !== signinPassword.value) {
@@ -43,10 +46,7 @@ function login() {
       `;
         nav.style.visibility = `visible`;
       }
-    } else if (
-      storedUser[i].email !== signinEmail.value ||
-      storedUser.length === 0
-    ) {
+    } else if (storedUser[i].email !== signinEmail.value) {
       incorrect.innerHTML = ` the email is not exist`;
       incorrect.style.color = `red`;
     }
